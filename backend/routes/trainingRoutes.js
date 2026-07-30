@@ -46,15 +46,26 @@ router.post("/", async (req, res) => {
       .populate("contractor")
       .populate("topic");
 
-    // Generate Excel
+    // // Generate Excel
+    // const excelPath = await generateExcel(populatedRecord);
+
+    // // Send Mail
+    // await sendTrainingMail({
+    //   to: "kumar.bikash.gouda@gmail.com",
+    //   contractor: populatedRecord.contractor.name,
+    //   trainer: populatedRecord.trainer,
+    //   topic: populatedRecord.topic.topicName,
+    //   attachment: excelPath,
+    // });
+    // Create Excel
     const excelPath = await generateExcel(populatedRecord);
 
     // Send Mail
     await sendTrainingMail({
       to: "kumar.bikash.gouda@gmail.com",
-      contractor: populatedRecord.contractor.name,
-      trainer: populatedRecord.trainer,
-      topic: populatedRecord.topic.topicName,
+      contractor: contractorData.name,
+      topic: topicData.topicName,
+      trainer,
       attachment: excelPath,
     });
 
