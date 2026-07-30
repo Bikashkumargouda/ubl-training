@@ -6,6 +6,16 @@ const contractorSchema = new mongoose.Schema(
       type: String,
       required: true,
       unique: true,
+      trim: true,
+    },
+    trainer: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    status: {
+      type: Boolean,
+      default: true,
     },
   },
   {

@@ -8,11 +8,23 @@ const trainingRecordSchema = new mongoose.Schema(
       required: true,
     },
 
-    employee: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Employee",
+    trainer: {
+      type: String,
       required: true,
     },
+
+    employees: [
+      {
+        employee: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "Employee",
+        },
+        employeeId: String,
+        employeeName: String,
+        designation: String,
+        gender: String,
+      },
+    ],
 
     topic: {
       type: mongoose.Schema.Types.ObjectId,
